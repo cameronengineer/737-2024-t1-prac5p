@@ -1,0 +1,11 @@
+services:
+  web:
+    image: quay.io/camo1995/calculator:0.1
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/multiply?n1=7&n2=2"]
+      interval: 5s
+      timeout: 5s
+      retries: 2
+    restart: unless-stopped
